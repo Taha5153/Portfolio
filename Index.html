@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taha Udaipurwala | AI Enthusiast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Taha Udaipurwala</h1>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <p>AI Enthusiast | Creative Soul | Leader in Innovation</p>
+            <img src="c:\Users\LENOVO\Downloads\WhatsApp Image 2024-10-25 at 9.13.41 PM.jpeg" alt="Taha Udaipurwala" class="profile-image">
+            <div class="share-buttons">
+                <button onclick="share()">Share This Page</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hello! I'm Taha, a computer science engineering student with a passion for Artificial Intelligence. Currently residing in Kolkata, India, I'm pursuing my B.Tech at IEM Newtown. Beyond academics, I enjoy sketching, playing guitar, and singing.</p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2>Educational Background</h2>
+            <p>I completed my schooling at Saiffee Golden English Public School in Kolkata and am currently pursuing my B.Tech in Computer Science (AI) at IEM Newtown.</p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Experience</h2>
+            <p>Proficient in Java, Python, and HTML/CSS with a passion for teamwork and leadership skills developed through sports and extracurricular activities.</p>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section">
+        <div class="container">
+            <h2>Research & Publications</h2>
+            <p>Currently working on nanotechnology in medicine, focusing on targeted drug delivery and future healthcare advancements.</p>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2>Awards & Achievements</h2>
+            <ul>
+                <li>Best Speaker in Debate</li>
+                <li>Best Innovation Project in Physics</li>
+                <li>Leadership qualities demonstrated as a prefect and house captain</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="container">
+            <h2>Events</h2>
+            <p>Organized school events and attended workshops to expand knowledge on various subjects, including renewable energy.</p>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section id="chatbot" class="section">
+        <div class="container">
+            <h2>AI Chatbot Assistant</h2>
+            <p>Have any questions? Chat with my AI assistant below!</p>
+            <div class="chat-container">
+                <div id="chatbox">
+                    <div class="chat-message">
+                        <p class="bot">Hello! How can I assist you today?</p>
+                    </div>
+                </div>
+                <input type="text" id="user-input" placeholder="Type your message here..." onkeydown="if (event.key === 'Enter') { sendMessage(); }">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <form action="mailto:tahaudaipurwala68@gmail.com" method="POST" enctype="text/plain">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Taha Udaipurwala. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot -->
+    <div class="floating-chatbot" onclick="toggleChatbot()">
+        <img src="c:\Users\LENOVO\Downloads\graident-ai-robot-vectorart_78370-4114.avif" alt="Chat Icon">
+    </div>
+
+    <!-- Scripts -->
+    <script src="chatbot.js"></script>
+    <script>
+        function share() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Taha Udaipurwala | AI Enthusiast',
+                    url: window.location.href
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(err => {
+                    console.error('Error sharing', err);
+                });
+            } else {
+                alert('Sharing is not supported in this browser.');
+            }
+        }
+
+        let chatbox = document.getElementById('chatbox');
+
+        function appendMessage(userType, message) {
+            let chatMessage = document.createElement('div');
+            chatMessage.classList.add('chat-message');
+            let messageContent = document.createElement('p');
+            messageContent.classList.add(userType);
+            messageContent.innerText = message;
+            chatMessage.appendChild(messageContent);
+            chatbox.appendChild(chatMessage);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function sendMessage() {
+            let userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                appendMessage('user', userInput);
+                document.getElementById('user-input').value = '';
+
+                setTimeout(() => {
+                    getBotResponse(userInput);
+                }, 1000);
+            }
+        }
+
+        function getBotResponse(input) {
+            let response = '';
+            if (input.toLowerCase().includes('hello')) {
+                response = 'Hello! How can I assist you today?';
+            } else if (input.toLowerCase().includes('what is ai')) {
+                response = 'AI stands for Artificial Intelligence, and it is the simulation of human intelligence by machines.';
+            } else {
+                response = 'I am still learning! Let me know if you have any other questions.';
+            }
+            appendMessage('bot', response);
+        }
+
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
+
